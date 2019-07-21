@@ -1,2 +1,3 @@
-# Statistical_Simulation
-Simulations_Investigating_Interesting_Phenomenon
+# Statistical Simulation
+
+Simulation studies investigating interesting phenomenon in real world.
