@@ -25,18 +25,16 @@ for(j in 1:9){
     for(i in 1:n_boot){
       X1_bot <- sample(X1, n, replace = TRUE)
       X2_bot <- sample(X2, n, replace = TRUE)
-      X1_pt <- sample(X1, n, replace = FALSE)
-      X2_pt <- sample(X2, n, replace = FALSE)
-      p_val_seq_pt[i] <- wilcox.test(X1_bot, X2_bot)$p.value
       p_val_seq[i] <- ks.test(X1_bot, X2_bot)$p.value
     }
     p_val_ks[j, k] <- quantile(p_val_seq, 0.95)
-    p_val_mw[j, k] <- quantile(p_val_seq_pt, 0.95)
+    p_val_mw[j, k] <- wilcox.test(X1_bot, X2_bot)$p.value
   }
 }
 #Visualize the heatmap:
 par(mfrow = c(1,2))
 heatmap(p_val_ks, Rowv = NA, Colv = NA, xlab = 'Shape_dist1',
         ylab = 'Shape_dist2')
-heatmap(p_val_pt, Rowv = NA, Colv = NA, xlab = 'Shape_dist1',
+heatmap(p_val_mw, Rowv = NA, Colv = NA, xlab = 'Shape_dist1',
         ylab = 'Shape_dist2')
+#Much more vague.
