@@ -43,15 +43,7 @@ for(i in 1:p){
 plot(cv.glmnet(training_data, target, alpha = 0, lambda = exp(seq(-10, 2, by = 0.2))))
 #Flat on the left.
 
-#有点扯淡啊 怎么simulation呢..
-prb = rep(0, 10000)
-for(i in 1:10000){
-  XX <- rbinom(10000000, 11, 0.04)
-  P <- ecdf(XX)
-  prb[i] <- 1 - P(100)
-}
-mean(prb)
-#
+
 
 
 
